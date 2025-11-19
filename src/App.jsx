@@ -948,7 +948,7 @@ export default function App() {
   
   // Fungsi untuk membuat variasi prompt
   const generatePromptVariation = async (originalPrompt) => {
-    const apiKey = ""; 
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
     const lang = settings.outputLanguage === 'id' ? 'Bahasa Indonesia' : 'English';
     const userQuery = `Saya punya prompt ini: "${originalPrompt}"\n\nTolong buatkan 3 variasi baru yang kreatif dan deskriptif dari prompt tersebut. Setiap variasi harus unik. Bahasa output: ${lang}.`;
@@ -983,7 +983,7 @@ export default function App() {
   // Fungsi untuk menyempurnakan prompt (AI-Assisted Editing)
   const refinePrompt = async (promptToRefine, instruction) => {
     setRefineModal(prev => ({ ...prev, isLoading: true, error: null }));
-    const apiKey = "";
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
     
     const userQuery = `
